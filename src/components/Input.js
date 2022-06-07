@@ -18,12 +18,13 @@ function Input({ addTodo }) {
         key: getKey(),
         done: false
       })
+      setText("")
     }
   }
 
   return (
     <div className="panel-block">
-      <input onChange={onChange} onKeyDown={onAdd} className='input' type="text"></input>
+      <input value={text} onChange={onChange} onKeyDown={onAdd} className='input' type="text"></input>
     </div>
   );
 }
