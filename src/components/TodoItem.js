@@ -7,7 +7,7 @@
 function TodoItem({ item, handleDone }) {
   return (
     <label className="panel-block ">
-      <input onClick={() => handleDone(item.key)} type="checkbox" checked={item.done} />
+      <input onClick={() => handleDone(item.key)} type="checkbox" defaultChecked={item.done} />
       <span className={item.done ? "has-text-grey-light" : ""}>{item.text}</span>
     </label>
   );

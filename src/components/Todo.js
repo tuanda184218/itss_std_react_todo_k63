@@ -27,6 +27,8 @@ function Todo() {
     /* テストコード 終了 */
   ]);
 
+  const [itemsfilter, setItemsfilter] = useState(items)
+
   const handleDone = (key) => {
     const newItems = items.map(item => {
       if (item.key === key) {
@@ -42,6 +44,16 @@ function Todo() {
     putItems([...items, item])
   }
 
+  const filter = (check) => {
+    if (check === "すべて") {
+      setItemsfilter(items)
+    } else if (check === "未完了") {
+      setItemsfilter(items.filter(item => item.done === false))
+    } else if (check === "完了済み") {
+      setItemsfilter(items.filter(item => item.done === true))
+    }
+  }
+
 
   return (
     <div className="panel">
@@ -49,11 +61,12 @@ function Todo() {
         ITSS ToDoアプリ
       </div>
       <Input addTodo={addTodo} />
-      {items.map(item => (
+      <Filter filter={filter} />
+      {itemsfilter.map(item => (
         <TodoItem item={item} handleDone={handleDone} />
       ))}
       <div className="panel-block">
-        {items.length} items
+        {itemsfilter.length} items
       </div>
     </div>
   );
