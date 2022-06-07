@@ -38,11 +38,17 @@ function Todo() {
     putItems(newItems);
   }
 
+  const addTodo = (item) => {
+    putItems([...items, item])
+  }
+
+
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
+      <Input addTodo={addTodo} />
       {items.map(item => (
         <TodoItem item={item} handleDone={handleDone} />
       ))}
